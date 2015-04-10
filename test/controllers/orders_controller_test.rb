@@ -14,7 +14,7 @@ class OrdersControllerTest < ActionController::TestCase
   test "require item in cart" do
     get :new
     assert_redirected_to store_path
-    assert_equal flash[:notice], 'Your cart is emtpy'
+    assert_equal flash[:notice], 'Your cart is empty'
   end
 
   test "should get new" do
@@ -22,7 +22,7 @@ class OrdersControllerTest < ActionController::TestCase
     item.build_cart
     item.product = products(:ruby)
     item.save!
-    session[:card_id] = item.card_id
+    session[:cart_id] = item.cart_id
     get :new
     assert_response :success
   end
